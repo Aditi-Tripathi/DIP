@@ -1,9 +1,13 @@
+#7
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import wiener
 
-gray = cv2.imread("suryakiran.jpeg", cv2.IMREAD_GRAYSCALE)
+gray = cv2.imread(
+    r"C:\Users\Devesh Tripathi\OneDrive\Desktop\suryakiran.jpeg",
+    cv2.IMREAD_GRAYSCALE
+)
 
 rng = np.random.default_rng(7)
 
@@ -39,3 +43,31 @@ wiener_img = np.clip(
     0, 255
 ).astype(np.uint8)
 
+# Display output
+fig, ax = plt.subplots(2, 3, figsize=(12, 8))
+
+images = [
+    gray,
+    sp,
+    gaussian,
+    sp_removed,
+    gaussian_removed,
+    wiener_img
+]
+
+titles = [
+    "Original Image",
+    "Salt & Pepper Noise",
+    "Gaussian Noise",
+    "Median Filter",
+    "Gaussian Filter",
+    "Wiener Filter"
+]
+
+for a, im, title in zip(ax.flat, images, titles):
+    a.imshow(im, cmap="gray")
+    a.set_title(title)
+    a.axis("off")
+
+plt.tight_layout()
+plt.show()
