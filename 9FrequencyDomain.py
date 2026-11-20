@@ -1,8 +1,9 @@
+#9
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-gray = cv2.imread("suryakiran.jpeg", cv2.IMREAD_GRAYSCALE)
+gray = cv2.imread(r"C:\Users\Devesh Tripathi\OneDrive\Desktop\suryakiran.jpeg", cv2.IMREAD_GRAYSCALE)
 
 rows, cols = gray.shape
 
